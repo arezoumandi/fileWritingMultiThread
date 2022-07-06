@@ -27,14 +27,19 @@ public class ProgressBars implements Observer {
     }
 
     public JProgressBar bind() {
-        jProgressBar.setValue((int) (((file.length() / 1024)) / 1024));
+        jProgressBar.setValue((int) ((file.length()/1048576 )));
         jProgressBar.setStringPainted(true);
         return jProgressBar;
     }
 
     @Override
     public void update(Observable o, Object o1) {
-        jProgressBar.setValue((int) ((file.length() / 1024) / 1024));
+        jProgressBar.setValue((int) ((file.length()/1048576 )));
+//        System.out.println("File siz of "+file+" : "+file.length());
+    }
+
+    public int getFileSize() {
+        return fileSize;
     }
 
 }
